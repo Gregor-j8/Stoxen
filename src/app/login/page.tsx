@@ -2,13 +2,14 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100 dark:bg-gray-900">
       <Card className="w-full max-w-sm shadow-xl bg-black">
         <CardHeader>
-          <CardTitle className="text-2xl text-center">Login</CardTitle>
+          <CardTitle className="text-2xl text-center text-white">Login</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-2">
@@ -22,6 +23,7 @@ export default function Login() {
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
           <Button className="w-full">Sign In</Button>
+          <Link href="/register" className="text-sm text-muted-foreground bg-black">Register</Link>
           <Button variant="link" className="text-sm text-muted-foreground bg-black">
             Forgot password?
           </Button>
