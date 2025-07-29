@@ -1,0 +1,2 @@
+export const timePeriod = ["1D", "1d", "1W", "5d", "1M", "1mo", "3M", "3mo", "6M", "6mo", "1Y", "1y", "ALL", "max"]
+export const frequency = ["1H", "1h", "1D", "1d", "1W", "1wk", "1M", "1mo", "1Y", "3mo"]
