@@ -12,9 +12,9 @@ export default function Home() {
 
     useEffect(() => {
         if (error) {
-            router.push("/login");
+            router.push("/login")
         }
-    }, [error, router]);
+    }, [error, router])
 
     if (isLoading || !data) {
         <LoadingPage/>
