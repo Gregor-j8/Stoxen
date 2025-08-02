@@ -1,14 +1,22 @@
 "use client"
-import { LoadingPage } from "@/components/ui/loading"
-import TimePeriod from "@/components/ui/TimePeriod"
+import { LoadingPage } from "@/components/loading"
+import StockPrice from "@/components/StockPriceMainPage"
+import TimePeriod from "@/components/TimePeriod"
 import { useUser } from "@/hooks/useAuth"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function Home() {
+    const [token, setToken] = useState('')
     const router = useRouter()
-    const token = localStorage.getItem("token")
     const { data, isLoading, error } = useUser(token)
+
+    useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+        setToken(token)
+        console.log("token", token)   
+    }}, [])
 
     useEffect(() => {
         if (error) {
@@ -24,6 +32,7 @@ export default function Home() {
         <div className="dark:bg-gray-900">
             <h1 className="text-white">Welcome {data?.username}</h1>
             <TimePeriod/>
+            <StockPrice/>
         </div>
     )
 }

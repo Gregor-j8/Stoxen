@@ -7,11 +7,17 @@ router = APIRouter(
 )
 
 @router.get("/{ticker}")
-def get_stock_data(ticker: str, start: str = Query("2020-01-01")):
+def get_stock_data(ticker: str, start: str = Query("2022-01-01")):
     try:
-        data = yf.download(ticker, start=start)
-        if data.empty:
-            raise HTTPException(status_code=404, detail="No data found for ticker.")
-        return data["Close"].dropna().to_dict()
+        ticker_obj = yf.Ticker(ticker)
+        hist = ticker_obj.history(start=start)
+        
+        if hist.empty:
+            raise HTTPException(status_code=404, detail=f"No data found for ticker {ticker}")
+        close_prices = hist["Close"].dropna()
+        close_dict = {date.strftime("%Y-%m-%d"): price for date, price in close_prices.items()}
+
+        return close_dict
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
