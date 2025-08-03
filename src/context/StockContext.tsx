@@ -13,7 +13,7 @@ type StockSettings = {
 const StockContext = createContext<StockSettings | undefined>(undefined)
 
 export const StockProvider = ({children}: {children: ReactNode}) => {
-    const [stockValue, setStockValue] = useState("")
+    const [stockValue, setStockValue] = useState("AAPL")
     const [timePeriodValue, setTimePeriodValue] = useState("")
     const [frequencyValue, setFrequencyValue] = useState("")
 
