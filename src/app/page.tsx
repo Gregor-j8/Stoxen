@@ -1,4 +1,5 @@
 "use client"
+import FutureStockPrice from "@/components/FutureStockPriceMainPage"
 import { LoadingPage } from "@/components/loading"
 import StockPrice from "@/components/StockPriceMainPage"
 import TimePeriod from "@/components/TimePeriod"
@@ -29,10 +30,17 @@ export default function Home() {
     }
 
     return (
-        <div className="dark:bg-gray-900">
+        <div className="dark:bg-gray-900 flex flex-col">
             <h1 className="text-white">Welcome {data?.username}</h1>
             <TimePeriod/>
-            <StockPrice/>
+            <div className="flex justify-between w-full p-10">
+                <div className="z-1000 w-1/2 h-96">
+                    <StockPrice />
+                </div>
+                <div className="w-1/2 h-96">
+                    <FutureStockPrice />
+                </div>
+            </div>
         </div>
     )
 }
