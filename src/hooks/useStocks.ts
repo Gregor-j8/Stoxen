@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { GetFutureStockSim, GetStock } from '@/service/stock'
+import { GetFutureStockSim, GetStock, GetStockAssetCorrelation } from '@/service/stock'
 
 
 export const useGetStock = (ticker: string) => {
@@ -16,6 +16,13 @@ export const useFutureStockSim = (ticker: string) => {
     queryKey: ['futureStock', ticker],
     queryFn: () => GetFutureStockSim(ticker),
     enabled: !!ticker,
+    staleTime: 5 * 60 * 1000
+  })
+}
+export const useStockAssetCorrelation = () => {
+  return useQuery({
+    queryKey: ['assetCorrelation'],
+    queryFn: () => GetStockAssetCorrelation(),
     staleTime: 5 * 60 * 1000
   })
 }

@@ -1,4 +1,5 @@
 "use client"
+import AssetCorrelation from "@/components/AssetCorrelationMainPage"
 import FutureStockPrice from "@/components/FutureStockPriceMainPage"
 import { LoadingPage } from "@/components/loading"
 import StockPrice from "@/components/StockPriceMainPage"
@@ -34,11 +35,16 @@ export default function Home() {
             <h1 className="text-white">Welcome {data?.username}</h1>
             <TimePeriod/>
             <div className="flex justify-between w-full p-10">
-                <div className="z-1000 w-1/2 h-96">
+                <div className="z-1000 w-1/2 h-52">
                     <StockPrice />
                 </div>
-                <div className="w-1/2 h-96">
+                <div className="w-1/2 h-52">
                     <FutureStockPrice />
+                </div>
+            </div>
+            <div className="flex justify-between w-full p-10">
+                <div className="z-1000 w-1/2 h-96">
+                    <AssetCorrelation />
                 </div>
             </div>
         </div>

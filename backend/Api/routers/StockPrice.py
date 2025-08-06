@@ -13,6 +13,7 @@ router = APIRouter(
 )
 
 five_years_ago = datetime.today() - relativedelta(years=5)
+today = datetime.today()
 
 @router.get("/{ticker}")
 def get_stock_data(ticker: str):
@@ -67,3 +68,22 @@ def get_stock_forecast(ticker):
     forecast_list = [{"date": date.strftime("%Y-%m-%d"), "predicted_price": round(price, 2)} for date, price in result["yhat"].items()]
 
     return forecast_list
+
+@router.get("/asset/correlation")
+def get_stock_correlation():
+    try:
+        tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
+        print("getting data")
+        data = yf.download(tickers, start=five_years_ago, end=today)["Close"]
+        print(data)
+
+        if data.empty:
+            raise ValueError("Downloaded data is empty. Check tickers or network.")
+        returns = data.pct_change().dropna()
+
+        correlation = returns.corr()
+
+        return correlation.to_dict()
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Correlation computation failed: {str(e)}")
