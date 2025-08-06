@@ -2,6 +2,7 @@
 import AssetCorrelation from "@/components/AssetCorrelationMainPage"
 import FutureStockPrice from "@/components/FutureStockPriceMainPage"
 import { LoadingPage } from "@/components/loading"
+import News from "@/components/NewsMainPage"
 import StockPrice from "@/components/StockPriceMainPage"
 import TimePeriod from "@/components/TimePeriod"
 import { useUser } from "@/hooks/useAuth"
@@ -45,6 +46,11 @@ export default function Home() {
             <div className="flex justify-between w-full p-10">
                 <div className="z-1000 w-1/2 h-96">
                     <AssetCorrelation />
+                </div>
+            </div>
+            <div className="flex justify-between w-full p-10">
+                <div className="z-1000 w-1/2 h-96">
+                    <News />
                 </div>
             </div>
         </div>
