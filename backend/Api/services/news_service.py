@@ -1,6 +1,33 @@
 from stocknews import StockNews
 import json
 from utils.redis_client import get_redis_client
+import feedparser
+
+
+def get_news_general():
+    r = get_redis_client()
+    key = "general_news"
+    
+    if not r.exists(key):
+        rss_url = "https://finance.yahoo.com/news/rssindex"
+        feed = feedparser.parse(rss_url)
+        print(feed)
+        news = []
+        for entry in feed.entries[:10]:
+            news.append({
+                "title": entry.get("title", "No title"),
+                "link": entry.get("link", ""),
+                "published": entry.get("published", "Unknown date"),
+                "summary": entry.get("summary", ""),
+                "author": entry.get("author", "Unknown"),
+            })
+        r.set(key, json.dumps(news), ex=7200)
+        return news
+    else: 
+        cached = r.get(key)
+        return json.loads(cached)
+    
+
 
 def add_news_to_db(symbol: str):
     r = get_redis_client()
