@@ -3,9 +3,9 @@ import { useEffect, useState } from "react"
 import { LoadingSpinner } from "./loading"
 
 export default function AssetCorrelation() {
-  const { data, isLoading, error } = useStockAssetCorrelation();
+  const { data, isLoading, error } = useStockAssetCorrelation()
   const [tickers, setTickers] = useState<string[]>([])
-  const [correlationData, setCorrelationData] = useState<Record<string, Record<string, number>>>({});
+  const [correlationData, setCorrelationData] = useState<Record<string, Record<string, number>>>({})
 
   useEffect(() => {
     if (data) {
