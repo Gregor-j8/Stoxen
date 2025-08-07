@@ -13,7 +13,7 @@ export default function AssetCorrelation() {
       setTickers(Object.keys(data))
     }
   }, [data])
-  console.log(data)
+
   if (isLoading || error || !data || Object.keys(data).length === 0) {
     return <LoadingSpinner />
   }
