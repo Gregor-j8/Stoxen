@@ -23,9 +23,6 @@ export default function Login() {
         localStorage.setItem("token", data.access_token)
         router.push("/")
       },
-      onError: (err) => {
-        console.log(`Login failed ${err}`)
-      }
     })
   }
 

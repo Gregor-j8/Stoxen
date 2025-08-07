@@ -22,9 +22,6 @@ export default function Register() {
         localStorage.setItem("token", data.access_token)
         router.push("/")
       },
-      onError: (err) => {
-        console.log(`Registration failed ${err}`)
-      }
     })
   }
 

@@ -1,6 +1,6 @@
 import { useStockAssetCorrelation } from "@/hooks/useStocks"
 import { useEffect, useState } from "react"
-import { LoadingSpinner } from "./loading"
+import { LoadingSpinner } from "../loading"
 
 export default function AssetCorrelation() {
   const { data, isLoading, error } = useStockAssetCorrelation()
@@ -13,7 +13,7 @@ export default function AssetCorrelation() {
       setTickers(Object.keys(data))
     }
   }, [data])
-
+  console.log(data)
   if (isLoading || error || !data || Object.keys(data).length === 0) {
     return <LoadingSpinner />
   }

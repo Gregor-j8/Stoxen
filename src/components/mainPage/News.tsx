@@ -1,5 +1,5 @@
 import { useGetNews } from "@/hooks/useNews"
-import { LoadingSpinner } from "./loading"
+import { LoadingSpinner } from "../loading"
 
 export default function News() {
     const {data, isLoading, error} = useGetNews()

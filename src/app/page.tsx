@@ -1,9 +1,9 @@
 "use client"
-import AssetCorrelation from "@/components/AssetCorrelationMainPage"
-import FutureStockPrice from "@/components/FutureStockPriceMainPage"
 import { LoadingPage } from "@/components/loading"
-import News from "@/components/NewsMainPage"
-import StockPrice from "@/components/StockPriceMainPage"
+import AssetCorrelation from "@/components/mainPage/AssetCorrelation"
+import FutureStockPrice from "@/components/mainPage/FutureStockPrice"
+import News from "@/components/mainPage/News"
+import StockPrice from "@/components/mainPage/StockPrice"
 import TimePeriod from "@/components/TimePeriod"
 import { useUser } from "@/hooks/useAuth"
 import { useRouter } from "next/navigation"
@@ -18,7 +18,6 @@ export default function Home() {
     const token = localStorage.getItem("token")
     if (token) {
         setToken(token)
-        console.log("token", token)   
     }}, [])
 
     useEffect(() => {
